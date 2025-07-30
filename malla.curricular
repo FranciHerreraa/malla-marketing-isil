@@ -1,0 +1,126 @@
+docs/index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Malla de Marketing - ISIL</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tab-button {
+      padding: 10px 20px;
+      margin: 5px;
+      background: #0066cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .tab-button.active {
+      background: #003366;
+    }
+    .content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Malla Interactiva - Marketing ISIL</h1>
+
+<div class="tabs">
+  <button class="tab-button active" onclick="showCycle(1)">Ciclo 1</button>
+  <button class="tab-button" onclick="showCycle(2)">Ciclo 2</button>
+  <button class="tab-button" onclick="showCycle(3)">Ciclo 3</button>
+  <button class="tab-button" onclick="showCycle(4)">Ciclo 4</button>
+  <button class="tab-button" onclick="showCycle(5)">Ciclo 5</button>
+  <button class="tab-button" onclick="showCycle(6)">Ciclo 6</button>
+</div>
+
+<div class="content" id="cycle-content">
+  <!-- Aquí se carga dinámicamente el contenido -->
+</div>
+
+<script>
+  const cycles = {
+    1: [
+      "Fundamentos de Marketing",
+      "Comunicación Digital Efectiva",
+      "Comportamiento del Consumidor",
+      "Análisis del Entorno de Negocios",
+      "Herramientas Tecnológicas para la Gestión"
+    ],
+    2: [
+      "Branding y Gestión de Productos",
+      "Psicología e Investigación Cualitativa",
+      "Organización de Eventos",
+      "Habilidades Directivas",
+      "Diseño Digital"
+    ],
+    3: [
+      "Marketing Estratégico",
+      "Investigación Cuantitativa",
+      "Business Intelligence",
+      "Presentación y Persuasión",
+      "Cultura de Innovación"
+    ],
+    4: [
+      "Marketing de Servicios",
+      "Social Media y Estrategias Digitales",
+      "Marketing Relacional y CRM",
+      "Investigación Creativa y Exploración de Insights",
+      "Técnicas de Investigación"
+    ],
+    5: [
+      "E-commerce y Mobile Marketing",
+      "Pricing Strategies",
+      "Metodologías de Innovación Empresarial",
+      "Análisis de Procesos Empresariales",
+      "Taller de Investigación Aplicada I"
+    ],
+    6: [
+      "Plan de Marketing",
+      "Proyecto Final (Taller de Investigación Aplicada II)",
+      "Gestión del Talento en la Organización",
+      "Electivo libre",
+      "Empleabilidad + Certificación final"
+    ]
+  };
+
+  function showCycle(cycle) {
+    const content = document.getElementById("cycle-content");
+    const courses = cycles[cycle].map(course => `<li>${course}</li>`).join("");
+    content.innerHTML = `<h2>Ciclo ${cycle}</h2><ul>${courses}</ul>`;
+
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-button')[cycle - 1].classList.add('active');
+  }
+
+  window.onload = () => showCycle(1);
+</script>
+
+</body>
+</html>
